@@ -23,24 +23,33 @@
   //
   // TODO: Add code to display the current date in the header of the page.
 
+
+//  THIS IS FROM THE STARTER CODE
+// $(function () { 
+
 let todaysDate = dayjs(); 
 $('#currentDay').text(todaysDate.format('dddd, MMMM D')); //putting todays date on the screen
 
 let currentTime = dayjs().format();
 // console.log(currentTime);
 
-let textboxInput=$('.description').val;
+// let possibleTimes=[9, 10, 11, 12, 1, 2, 3, 4, 5] 
 
-// $(function () {
-  
-// });
 
-// let newDate = dayjs().hour(12) // returns new dayjs object
-// console.log(newDate);
+let hourOfDay=dayjs().get('hour');
+console.log(hourOfDay);
 
-// saveButtons.on('click', function () {
-//   localStorage.setItem("textboxInput", (textboxInput));
-// })
+
+//if statement w/ possible times and hour of day
+//connect possible times w/ 
+
+
+newDate = dayjs().hour(12);
+console.log(newDate);
+//12 is a placeholder and we need it to be i
+
+// let textboxInput=$('.description').val;
+
 
 $('.saveBtn').on('click', function () {
   // get nearby values
@@ -51,9 +60,17 @@ $('.saveBtn').on('click', function () {
   localStorage.setItem(key, value);
 
 });
-//   
-function displayValue() {
-localStorage.getItem(value);
-}
+let hour10value= localStorage.getItem('hour-10');
+//   make variable
+
+$('#hour-10 .description').val(hour10value);
+
+//hour-10 parent, description child
+//getelementbyid / queryselector
+//we're only grabbing textarea
+
+//.val is a function, receives value of what's in local storage hr 10
+
+console.log(localStorage.getItem('hour-10'));
 
 //saving savebtn class
