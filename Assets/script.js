@@ -29,10 +29,7 @@ $('#currentDay').text(todaysDate.format('dddd, MMMM D')); //putting todays date 
 let currentTime = dayjs().format();
 // console.log(currentTime);
 
-let saveButtons=$('.time-block');
-// console.log(saveButtons)
-
-let textboxInput=$('.description').val();
+let textboxInput=$('.description').val;
 
 // $(function () {
   
@@ -41,7 +38,22 @@ let textboxInput=$('.description').val();
 // let newDate = dayjs().hour(12) // returns new dayjs object
 // console.log(newDate);
 
-saveButtons.on('click', function () {
-  localStorage.setItem("textboxInput", (textboxInput));
-})
+// saveButtons.on('click', function () {
+//   localStorage.setItem("textboxInput", (textboxInput));
+// })
+
+$('.saveBtn').on('click', function () {
+  // get nearby values
+  var value = $(this).siblings('.description').val();
+  var key = $(this).parent().attr('id');
+
+  // save in localStorage
+  localStorage.setItem(key, value);
+
+});
 //   
+function displayValue() {
+localStorage.getItem(value);
+}
+
+//saving savebtn class
