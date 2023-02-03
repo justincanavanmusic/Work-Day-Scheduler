@@ -12,9 +12,13 @@
   //
 
   // TODO: Add code to apply the past, present, or future class to each time
-  // block by comparing the id to the current hour. HINTS: How can the id
+  // block by comparing the id to the current hour. 
+  
+  //HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
+  // past, present, and future classes? 
+  
+  //How can Day.js be used to get the
   // current hour in 24-hour time?
   //
   // TODO: Add code to get any user input that was saved in localStorage and set
@@ -30,18 +34,47 @@
 let todaysDate = dayjs(); 
 $('#currentDay').text(todaysDate.format('dddd, MMMM D')); //putting todays date on the screen
 
-let currentTime = dayjs().format();
-// console.log(currentTime);
-
-// let possibleTimes=[9, 10, 11, 12, 1, 2, 3, 4, 5] 
-
-
 let hourOfDay=dayjs().get('hour');
 console.log(hourOfDay);
 
+let currentTime = dayjs().format();
+// console.log(currentTime);
+
+let possibleTimes=[9, 10, 11, 12, 1, 2, 3, 4, 5] 
+
+//array of all html textboxes
+let textareaArray=$(".description")
+// console.log(textareaArray);
+console.log($(textareaArray[0]).attr("id"));
+
+for (let i = 0; i < textareaArray.length; i++) {
+ 
+  if ($(textareaArray[i]).attr('id')==hourOfDay) {
+    $(textareaArray[i]).addClass("present");
+  }
+  if ($(textareaArray[i]).attr('id')>hourOfDay) {
+    $(textareaArray[i]).addClass("future");
+  }
+  if ($(textareaArray[i]).attr('id')<hourOfDay) {
+    $(textareaArray[i]).addClass("past");
+  }
+  
+}
+console.log($(textareaArray[0]))
+
+if (hourOfDay<possibleTimes[0]) {
+  console.log("something");
+}
+
+// if (possibleTimes[0]>hourOfDay)
+// console.log("green");
+
+
 
 //if statement w/ possible times and hour of day
-//connect possible times w/ 
+//connect possible times w/ id of block
+//if true/false remove/add class
+//need to target backgroundcolor textbox with logic
 
 
 newDate = dayjs().hour(12);
@@ -60,10 +93,30 @@ $('.saveBtn').on('click', function () {
   localStorage.setItem(key, value);
 
 });
+
+let hour9value= localStorage.getItem('hour-9')
 let hour10value= localStorage.getItem('hour-10');
+let hour11value= localStorage.getItem('hour-11')
+let hour12value= localStorage.getItem('hour-12')
+let hour1value= localStorage.getItem('hour-1')
+let hour2value= localStorage.getItem('hour-2')
+let hour3value= localStorage.getItem('hour-3')
+let hour4value= localStorage.getItem('hour-4')
+let hour5value= localStorage.getItem('hour-5')
+
 //   make variable
 
+
+$('#hour-9 .description').val(hour9value);
 $('#hour-10 .description').val(hour10value);
+$('#hour-11 .description').val(hour11value);
+$('#hour-12 .description').val(hour12value);
+$('#hour-1 .description').val(hour1value);
+$('#hour-2 .description').val(hour2value);
+$('#hour-3 .description').val(hour3value);
+$('#hour-4 .description').val(hour4value);
+$('#hour-5 .description').val(hour5value);
+
 
 //hour-10 parent, description child
 //getelementbyid / queryselector
@@ -71,6 +124,6 @@ $('#hour-10 .description').val(hour10value);
 
 //.val is a function, receives value of what's in local storage hr 10
 
-console.log(localStorage.getItem('hour-10'));
+// console.log(localStorage.getItem('hour-10'));
 
 //saving savebtn class
