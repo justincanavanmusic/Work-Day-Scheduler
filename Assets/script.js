@@ -2,22 +2,10 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-// let todaysDate=document.getElementById("currentDay");
-// console.log(currentDay);
-
-var now = dayjs();
-// now=document.getElementById("currentDay");
-let todaysDate=now.textContent;
-
-
-
-
-
-$(function () {
-  
   // TODO: Add a listener for click events on the save button. This code should
-  // use the id in the containing time-block as a key to save the user input in
-  // local storage. HINT: What does `this` reference in the click listener
+  //use the id in the containing time-block as a key to save the user input in  local storage. 
+  
+  //HINT: What does `this` reference in the click listener
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
@@ -34,4 +22,26 @@ $(function () {
   // attribute of each time-block be used to do this?
   //
   // TODO: Add code to display the current date in the header of the page.
-});
+
+let todaysDate = dayjs(); 
+$('#currentDay').text(todaysDate.format('dddd, MMMM D')); //putting todays date on the screen
+
+let currentTime = dayjs().format();
+// console.log(currentTime);
+
+let saveButtons=$('.time-block');
+// console.log(saveButtons)
+
+let textboxInput=$('.description').val();
+
+// $(function () {
+  
+// });
+
+// let newDate = dayjs().hour(12) // returns new dayjs object
+// console.log(newDate);
+
+saveButtons.on('click', function () {
+  localStorage.setItem("textboxInput", (textboxInput));
+})
+//   
