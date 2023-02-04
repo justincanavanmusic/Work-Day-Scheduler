@@ -31,21 +31,62 @@
 //  THIS IS FROM THE STARTER CODE
 // $(function () { 
 
+//
+
+
 let todaysDate = dayjs(); 
-$('#currentDay').text(todaysDate.format('dddd, MMMM D')); //putting todays date on the screen
+$('#currentDay').text(todaysDate.format('dddd, MMMM D')); 
+//uses dayjs to give us the date. attached it to the #currentday id and made it into text. used the date format from the sample gif
 
 let hourOfDay=dayjs().get('hour');
-console.log(hourOfDay);
+//this gives us the current hour of the day in 0-23 format. ie 12:00 am=0,   1:00 am=1, etc
+// console.log(hourOfDay);
 
 let currentTime = dayjs().format();
-// console.log(currentTime);
+//gives us exact time and date right now
 
-let possibleTimes=[9, 10, 11, 12, 1, 2, 3, 4, 5] 
+//puts event listener on save button
+$('.saveBtn').on('click', function () {
+  var value = $(this).siblings('.description').val();
+  var key = $(this).parent().attr('id');
 
-//array of all html textboxes
-let textareaArray=$(".description")
-// console.log(textareaArray);
-console.log($(textareaArray[0]).attr("id"));
+  // saves the key and value into local storage
+  localStorage.setItem(key, value);
+
+});
+  //"this" sets it up so that whichever save button is clicked will have an event and its info
+  //We needed to target the textarea element and used .siblings(.description) to target the description class and the .val method to target the value of that textarea
+
+
+//each one of these variables get the "value" from each "key" in local storage
+let hour9value= localStorage.getItem('hour-9')
+let hour10value= localStorage.getItem('hour-10');
+let hour11value= localStorage.getItem('hour-11')
+let hour12value= localStorage.getItem('hour-12')
+let hour1value= localStorage.getItem('hour-1')
+let hour2value= localStorage.getItem('hour-2')
+let hour3value= localStorage.getItem('hour-3')
+let hour4value= localStorage.getItem('hour-4')
+let hour5value= localStorage.getItem('hour-5')
+
+//grabs the id from the corresponding div (this was the unique attribute) and the .description class (to get the textbox) and places the "value" of the key/value pair into the textbox on the screen.
+$('#hour-9 .description').val(hour9value);
+// console.log($('#hour-9 .description').val(hour9value))
+$('#hour-10 .description').val(hour10value);
+$('#hour-11 .description').val(hour11value);
+$('#hour-12 .description').val(hour12value);
+$('#hour-1 .description').val(hour1value);
+$('#hour-2 .description').val(hour2value);
+$('#hour-3 .description').val(hour3value);
+$('#hour-4 .description').val(hour4value);
+$('#hour-5 .description').val(hour5value);
+
+
+//array of all html textboxes, targeted via the description class
+let textareaArray=$(".description");
+
+//for loop that goes through all of the textarea boxes
+//added an id and each textarea to used the number of the id attribute to compare to hourOfDay to complete our logic. depending on whether the array id was greater than, less than, or equal to the hourOfDay, we applied the corresponding class to the textarea in order to color code the calendar
 
 for (let i = 0; i < textareaArray.length; i++) {
  
@@ -62,68 +103,3 @@ for (let i = 0; i < textareaArray.length; i++) {
 }
 console.log($(textareaArray[0]))
 
-if (hourOfDay<possibleTimes[0]) {
-  console.log("something");
-}
-
-// if (possibleTimes[0]>hourOfDay)
-// console.log("green");
-
-
-
-//if statement w/ possible times and hour of day
-//connect possible times w/ id of block
-//if true/false remove/add class
-//need to target backgroundcolor textbox with logic
-
-
-newDate = dayjs().hour(12);
-console.log(newDate);
-//12 is a placeholder and we need it to be i
-
-// let textboxInput=$('.description').val;
-
-
-$('.saveBtn').on('click', function () {
-  // get nearby values
-  var value = $(this).siblings('.description').val();
-  var key = $(this).parent().attr('id');
-
-  // save in localStorage
-  localStorage.setItem(key, value);
-
-});
-
-let hour9value= localStorage.getItem('hour-9')
-let hour10value= localStorage.getItem('hour-10');
-let hour11value= localStorage.getItem('hour-11')
-let hour12value= localStorage.getItem('hour-12')
-let hour1value= localStorage.getItem('hour-1')
-let hour2value= localStorage.getItem('hour-2')
-let hour3value= localStorage.getItem('hour-3')
-let hour4value= localStorage.getItem('hour-4')
-let hour5value= localStorage.getItem('hour-5')
-
-//   make variable
-
-
-$('#hour-9 .description').val(hour9value);
-$('#hour-10 .description').val(hour10value);
-$('#hour-11 .description').val(hour11value);
-$('#hour-12 .description').val(hour12value);
-$('#hour-1 .description').val(hour1value);
-$('#hour-2 .description').val(hour2value);
-$('#hour-3 .description').val(hour3value);
-$('#hour-4 .description').val(hour4value);
-$('#hour-5 .description').val(hour5value);
-
-
-//hour-10 parent, description child
-//getelementbyid / queryselector
-//we're only grabbing textarea
-
-//.val is a function, receives value of what's in local storage hr 10
-
-// console.log(localStorage.getItem('hour-10'));
-
-//saving savebtn class
