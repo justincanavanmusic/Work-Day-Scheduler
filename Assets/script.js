@@ -85,7 +85,7 @@ $('#hour-5 .description').val(hour5value);
 //array of all html textboxes, targeted via the description class
 let textareaArray=$(".description");
 
-//for loop that goes through all of the textarea boxes
+//for loop that targets of the textarea boxes
 //added an id and each textarea to used the number of the id attribute to compare to hourOfDay to complete our logic. depending on whether the array id was greater than, less than, or equal to the hourOfDay, we applied the corresponding class to the textarea in order to color code the calendar
 
 for (let i = 0; i < textareaArray.length; i++) {
