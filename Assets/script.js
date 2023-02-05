@@ -52,10 +52,10 @@ $('.saveBtn').on('click', function () {
 
   // saves the key and value into local storage
   localStorage.setItem(key, value);
-
 });
   //"this" sets it up so that whichever save button is clicked will have an event and its info
-  //We needed to target the textarea element and used .siblings(.description) to target the description class and the .val method to target the value of that textarea
+  //We needed to target the textarea element and used .siblings(.description) to target the description class in the textarea element. used the .val method to return the value of that textarea.
+  //for key we targeted its parent div and used the .attr method to return the value of the "id" in that div
 
 
 //each one of these variables get the "value" from each "key" in local storage
